@@ -191,8 +191,7 @@ methods.
 sub send {
     my $self = shift;
     
-    my $query_packet = $self->make_query_packet(@_);
-    my $question = ($query_packet->question)[0];
+    my $question = Net::DNS::Question->new(@_);
     my $domain   = lc($question->qname);
     my $rr_type  = $question->qtype;
     my $class    = $question->qclass;
