@@ -276,7 +276,10 @@ included with Net::DNS::Resolver::Programmable.
 
 =head1 AUTHORS
 
-Julian Mehnle <julian@mehnle.net>
+David Precious (BIGPRESH) C<< <davidp@preshweb.co.uk> >> took on maintainership
+in July 2017
+
+Original author Julian Mehnle C<< <julian@mehnle.net> >>
 
 =cut
 
