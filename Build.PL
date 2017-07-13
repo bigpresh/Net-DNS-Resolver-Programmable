@@ -2,7 +2,7 @@ use Module::Build;
 
 my $build = Module::Build->new(
     module_name     => 'Net::DNS::Resolver::Programmable',
-    dist_author     => 'Julian Mehnle <julian@mehnle.net>',
+    dist_author     => 'David Precious <davidp@preshweb.co.uk>',
     license         => 'perl',
     requires        => {
         # Core requirements:
