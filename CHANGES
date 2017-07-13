@@ -10,6 +10,7 @@
   * Regenerate README via pod2readme
   * Fix version number in changelog entry below - d'oh - and remove
     use of deprecated qv()
+  * Import rcode list from Net::DNS - RT 96390
 
 
 --- 0.004 (2017-07-13)
