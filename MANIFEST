@@ -1,9 +1,4 @@
 CHANGES
-debian/changelog
-debian/compat
-debian/control
-debian/copyright
-debian/rules
 INSTALL
 lib/Net/DNS/Resolver/Programmable.pm
 t/01-basic.t
