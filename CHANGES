@@ -4,7 +4,15 @@
 #   ! = Changed something significant, or removed a feature
 #   * = Fixed a bug, or made a minor improvement
 
---- 0.100 (2017-07-13)
+--- 0.005 (2017-07-13)
+
+  * Remove debian/ subdir as per RT #108522
+  * Regenerate README via pod2readme
+  * Fix version number in changelog entry below - d'oh - and remove
+    use of deprecated qv()
+
+
+--- 0.004 (2017-07-13)
 
   * BIGPRESH taking over maintainership of this seemingly orphaned but
     very useful distribution.  Plan to fix various RT tickets.
