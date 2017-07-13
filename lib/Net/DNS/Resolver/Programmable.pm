@@ -21,7 +21,7 @@ emulation of DNS
 
 =cut
 
-use version; our $VERSION = qv('0.100');
+use version; our $VERSION = qv('0.004');
 
 use warnings;
 use strict;
