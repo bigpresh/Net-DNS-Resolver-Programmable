@@ -30,6 +30,11 @@ use Net::DNS::Packet;
 use constant TRUE   => (0 == 0);
 use constant FALSE  => not TRUE;
 
+my %rcode = map { $_ => 1 } qw(NOERROR FORMERR SERVFAIL NXDOMAIN NOTIMP
+        REFUSED YXDOMAIN YXRRSET NXRRSET NOTAUTH NOTZONE BADVERS
+        BADSIG BADKEY BADTIME BADMODE BADNAME BADALG BADTRUNC);
+
+
 # Interface:
 ##############################################################################
 
@@ -202,7 +207,7 @@ sub send {
         ($result, $aa, @answer_rrs) = $resolver_code->($domain, $rr_type, $class);
     }
     
-    if (not defined($result) or defined($Net::DNS::rcodesbyname{$result})) {
+    if ( not defined($result) or defined($rcode{$result}) ) {
         # Valid RCODE, return a packet:
         
         $aa     = TRUE      if not defined($aa);
