@@ -15,9 +15,6 @@ package Net::DNS::Resolver::Programmable;
 Net::DNS::Resolver::Programmable - programmable DNS resolver class for offline
 emulation of DNS
 
-=head1 VERSION
-
-0.003
 
 =cut
 
