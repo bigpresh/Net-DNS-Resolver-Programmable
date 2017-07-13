@@ -26,5 +26,5 @@ the CPAN shell, or manually with the following commands:
   ./Build test
   ./Build install
 
-# $Id: README 167 2005-01-17 18:26:45Z julian $
+
 # vim:tw=79

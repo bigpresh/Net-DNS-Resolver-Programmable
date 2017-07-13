@@ -23,4 +23,4 @@ my $build = Module::Build->new(
 
 $build->create_build_script();
 
-# $Id: Build.PL 13 2007-05-30 22:12:35Z julian $
+

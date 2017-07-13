@@ -3,7 +3,7 @@
 # A Net::DNS::Resolver descendant class for offline emulation of DNS
 #
 # (C) 2006-2007 Julian Mehnle <julian@mehnle.net>
-# $Id: Programmable.pm 13 2007-05-30 22:12:35Z julian $
+
 #
 ##############################################################################
 
