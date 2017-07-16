@@ -1,4 +1,4 @@
-#!perl -T
+#!perl
 use 5.006;
 use strict;
 use warnings FATAL => 'all';
@@ -28,7 +28,7 @@ my $resolver = Net::DNS::Resolver::Programmable->new(
 # Check that we get that fake record
 my $reply = $resolver->query( 'example.com');
 
-isa_ok($reply, "Net::DNS::Packet", "Got a Net::DNS::Packet back");
+is(ref($reply), "Net::DNS::Packet", "Got a Net::DNS::Packet back");
 
 my ($rr) = $reply->answer;
 
