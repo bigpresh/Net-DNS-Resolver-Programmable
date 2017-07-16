@@ -285,6 +285,16 @@ in July 2017
 
 Original author Julian Mehnle C<< <julian@mehnle.net> >>
 
+=head1 ACKNOWLEDGEMENTS
+
+Dick Franks (rwfranks)
+
+(This section was added by BIGPRESH in July 2017, so currently omits
+acknowledgements for those who contributed things in the past; I may
+retrospectively add them in future.)
+
+
+
 =cut
 
 TRUE;
