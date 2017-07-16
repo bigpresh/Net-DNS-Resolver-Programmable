@@ -18,14 +18,16 @@ emulation of DNS
 
 =cut
 
-our $VERSION = '0.005';
+
+our $VERSION;
+$VERSION = '0.005';
 
 use warnings;
 use strict;
 
+use Net::DNS;
 use base 'Net::DNS::Resolver';
 
-use Net::DNS::Packet;
 
 use constant TRUE   => (0 == 0);
 use constant FALSE  => not TRUE;
@@ -157,10 +159,10 @@ descriptions.
 =cut
 
 sub new {
-    my ($self, %options) = @_;
+    my ($class, %options) = @_;
     
     # Create new object:
-    $self = $self->SUPER::new(%options);
+    my $self = $class->SUPER::new(%options);
     
     $self->{records}       = $options{records};
     $self->{resolver_code} = $options{resolver_code};
