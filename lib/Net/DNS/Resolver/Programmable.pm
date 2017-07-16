@@ -20,7 +20,7 @@ emulation of DNS
 
 
 our $VERSION;
-$VERSION = '0.005';
+$VERSION = '0.006';
 
 use warnings;
 use strict;
