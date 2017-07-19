@@ -196,7 +196,17 @@ methods.
 sub send {
     my $self = shift;
     
-    my $question = Net::DNS::Question->new(@_);
+    # We could be passed a Net::DNS::Packet object, or a set of strings; handle
+    # both
+    my ($packet, $question);
+    if (Scalar::Util::blessed($_[0]) && $_[0]->isa('Net::DNS::Packet')) {
+        $packet = $_[0];
+        # TODO: is it a safe assumption that a packet we're passed will only
+        # contain one Question object?
+        ($question) = $packet->question;
+    } else {
+        $question = Net::DNS::Question->new(@_);
+    }
     my $domain   = lc($question->qname);
     my $rr_type  = $question->qtype;
     my $class    = $question->qclass;
@@ -226,13 +236,13 @@ sub send {
             }
         }
         
-        my $packet = Net::DNS::Packet->new($domain, $rr_type, $class);
-        $packet->header->qr(TRUE);
-        $packet->header->rcode($result);
-        $packet->header->aa($aa);
-        $packet->push(answer => @answer_rrs);
+        my $response_packet = Net::DNS::Packet->new($domain, $rr_type, $class);
+        $response_packet->header->qr(TRUE);
+        $response_packet->header->rcode($result);
+        $response_packet->header->aa($aa);
+        $response_packet->push(answer => @answer_rrs);
         
-        return $packet;
+        return $response_packet;
     }
     else {
         # Invalid RCODE, signal error condition by not returning a packet:
