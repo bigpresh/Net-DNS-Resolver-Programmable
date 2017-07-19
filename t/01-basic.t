@@ -4,7 +4,7 @@ use strict;
 use warnings FATAL => 'all';
 use Test::More;
 
-plan tests => 9;
+plan tests => 12;
 
 use Net::DNS::Resolver::Programmable;
 
@@ -63,6 +63,15 @@ is($rr->type, "NS", "Got a Net::DNS::RR::NS object for NS $domain");
 is($rr->nsdname, $fake_ns, "Correct NS answer as mocked for $domain");
 
 
+# We can also do a lookup by passing in a Net::DNS::Packet object
+my $packet = Net::DNS::Packet->new($domain, "A", "IN");
+$reply = $resolver->send($packet);
+is(ref($reply), "Net::DNS::Packet",
+    "got a Packet object back from send(\$packet)");
+($rr) = $reply->answer;
+is ($rr->type, "A", 
+    "Got a Net::DNS::RR::A object for $domain from send(\$packet)");
+is($rr->address, "127.0.0.5", "... and it contains the expected answer");
 
 
 
