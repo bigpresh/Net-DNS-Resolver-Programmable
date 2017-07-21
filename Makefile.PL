@@ -19,6 +19,7 @@ WriteMakefile(
     },
     PREREQ_PM => {
         'Net::DNS'       => 0,
+        'Scalar::Util'   => 0,
     },
     dist  => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean => { FILES => 'Net-DNS-Resolver-Programmable-*' },
