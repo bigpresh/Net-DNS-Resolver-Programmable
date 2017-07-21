@@ -4,6 +4,9 @@
 #   ! = Changed something significant, or removed a feature
 #   * = Fixed a bug, or made a minor improvement
 
+--- 0.008 (2017-07-21)
+  * Add Scalar::Util to deps
+
 --- 0.007 (2017-07-19)
   * Fix handling pre-prepared ::Packet objects passed to send()
   + Additional tests
