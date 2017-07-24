@@ -4,7 +4,7 @@ use strict;
 use warnings FATAL => 'all';
 use Test::More;
 
-plan tests => 12;
+plan tests => 17;
 
 use Net::DNS::Resolver::Programmable;
 
@@ -69,9 +69,34 @@ $reply = $resolver->send($packet);
 is(ref($reply), "Net::DNS::Packet",
     "got a Packet object back from send(\$packet)");
 ($rr) = $reply->answer;
+ok($rr, "Got an answer in that packet");
 is ($rr->type, "A", 
     "Got a Net::DNS::RR::A object for $domain from send(\$packet)");
 is($rr->address, "127.0.0.5", "... and it contains the expected answer");
 
+my $unmocked = "www.google.com";
+
+# A query() that shouldn't match any of the mocked entries we set up
+# gets undef
+$reply = $resolver->query($unmocked);
+
+ok(!$reply, "No reply for a query() on unmocked name $unmocked");
 
 
+# send() on the other hand gets a packet back with the expected rcode
+$reply = $resolver->send($unmocked);
+
+is(ref($reply),
+    "Net::DNS::Packet",
+    "Got a Net::DNS::Packet back from send() on unmocked name $unmocked",
+);
+
+is(
+    $reply->header->rcode,
+    "NOERROR",
+    "Expected NOERROR rcode for lookup that doesn't match mocks",
+);
+
+($rr) = $reply->answer;
+
+is($rr, undef, "No answer for lookup that doesn't match mocks");
