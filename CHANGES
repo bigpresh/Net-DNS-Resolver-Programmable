@@ -4,6 +4,11 @@
 #   ! = Changed something significant, or removed a feature
 #   * = Fixed a bug, or made a minor improvement
 
+--- 0.009 (2017-07-24)
+  + Cleaner way to handle both arrays of strings and Net::DNS::Packet objects,
+    courtesy of NLNETLABS (Dick Franks) in RT 122542 - thanks!
+  + Extend tests to cover non-mocked queries too
+
 --- 0.008 (2017-07-21)
   * Add Scalar::Util to deps
 
